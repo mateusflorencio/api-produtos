@@ -7,5 +7,8 @@ export default {
   collectCoverage: true,
   testMatch: ['**/*.spec.js'],
   transform: {},
-  roots: ['<rootDir>/__tests__']
+  roots: ['<rootDir>/__tests__'],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1'
+  }
 }
