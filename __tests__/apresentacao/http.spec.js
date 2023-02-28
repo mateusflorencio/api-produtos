@@ -18,10 +18,10 @@ describe('Controlador HTTP', () => {
   })
 
   test('Deve retornar 500 quando o statusCode for 500', () => {
-    const resultado = serverError(['Erro interno'])
+    const resultado = serverError()
     expect(resultado).toEqual({
       statusCode: 500,
-      body: ['Erro interno']
+      body: 'Erro interno do servidor'
     })
   })
 

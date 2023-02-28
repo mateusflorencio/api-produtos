@@ -8,9 +8,9 @@ export const badRequest = (erros) => ({
   body: erros
 })
 
-export const serverError = (erros) => ({
+export const serverError = () => ({
   statusCode: 500,
-  body: erros
+  body: 'Erro interno do servidor'
 })
 
 export const notFound = (erros) => ({

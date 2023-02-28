@@ -28,4 +28,11 @@ describe('CriacaoProduto', () => {
     expect(resposta.statusCode).toBe(201)
     expect(resposta.body).toEqual('produto criado')
   })
+
+  test('Deve retornar 500 se o caso de uso lançar uma exceção', async () => {
+    casoDeUsoCriacaoProduto.mockRejectedValueOnce(new Error('erro'))
+    const resposta = await sut({})
+    expect(resposta.statusCode).toBe(500)
+    expect(resposta.body).toEqual('Erro interno do servidor')
+  })
 })
