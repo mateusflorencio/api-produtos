@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "test": " NODE_OPTIONS=--experimental-vm-modules npx jest --passWithNoTests --no-cache --runInBand ",
-    "test:watch": "npm t -- --watch",
-    "dev:compose": "docker-compose up -d"
+    "test:watch": "npm t -- --watch"
   },
   "repository": {
     "type": "git",
