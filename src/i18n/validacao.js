@@ -2,7 +2,8 @@ export default (idioma = 'pt-br') => {
   const traducoes = {
     'pt-br': {
       validacao: {
-        temCampo: 'Campo obrigatório'
+        temCampo: 'Campo obrigatório',
+        numeroPositivo: 'Número deve ser positivo'
       }
     }
   }
