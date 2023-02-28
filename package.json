@@ -1,0 +1,29 @@
+{
+  "name": "api-produtos",
+  "version": "0.0.1",
+  "description": "api para gerenciamento de produtos",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateusflorencio/api-produtos.git"
+  },
+  "keywords": [
+    "produtos",
+    "gerenciamento",
+    "api"
+  ],
+  "author": "Mateus Florêncio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mateusflorencio/api-produtos/issues"
+  },
+  "homepage": "https://github.com/mateusflorencio/api-produtos#readme",
+  "engines": {
+    "node": ">= 18.0.0"
+  },
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.7.4"
+  }
+}
