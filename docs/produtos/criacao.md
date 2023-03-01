@@ -8,7 +8,9 @@
 
 3.✅ O preço deve ser positivo
 
-4.✅ Deve retornar o produto criado com status 201
+4.O aplicativo deve armazenar os dados do produto
+
+5.✅ Deve retornar o produto criado com status 201
 
 ## Exceções
 
