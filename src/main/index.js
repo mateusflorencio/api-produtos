@@ -1,3 +1,5 @@
-import app from '../main/config/server.js'
+import app from './config/server.js'
 
 app()
+
+

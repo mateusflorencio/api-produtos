@@ -2,21 +2,20 @@
   "name": "api-produtos",
   "version": "0.0.1",
   "description": "api para gerenciamento de produtos",
-  "main": "index.js",
+  "exports": "./index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/main/index.js ",
+    "start": "node --loader esm-module-alias/loader --no-warnings ./src/main/index.js",
+    "dev": "nodemon --loader esm-module-alias/loader --no-warnings src/main/index.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --no-cache --runInBand",
     "test:watch": "npm t -- --watch ",
     "test:ci": "npm t -- --ci --coverage",
     "test:e2e": "npm t -- --watch --detectOpenHandles --config ./jest.e2e.config.js",
-    "dev:compose": "docker-compose up -d"
+    "dev:compose": "docker-compose up -d",
+    "dev:generate": "prisma generate --schema=./src/externo/repositorio/mongo/prisma/schema.prisma"
   },
-  "imports": {
-    "@/*": "./src/*"
-  },
-  "_moduleAliases": {
-    "@/": "./src"
+  "aliases": {
+    "@": "./src"
   },
   "prisma": "src/externo/repositorio/mongo/prisma/schema.prisma",
   "repository": {
@@ -40,17 +39,15 @@
   "devDependencies": {
     "git-commit-msg-linter": "^4.7.4",
     "jest": "^29.4.3",
-    "link-module-alias": "^1.2.0",
-    "mock-req-res": "^1.2.1",
     "nodemon": "^2.0.20",
-    "prisma": "^4.11.0"
+    "prisma": "^4.11.0",
+    "supertest": "^6.3.3"
   },
   "dependencies": {
     "@prisma/client": "^4.11.0",
     "cors": "^2.8.5",
+    "esm-module-alias": "^2.0.3",
     "express": "^4.18.2",
-    "module-alias": "^2.2.2",
-    "mongodb": "^5.1.0",
-    "supertest": "^6.3.3"
+    "mongodb": "^5.1.0"
   }
 }
