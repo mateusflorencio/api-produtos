@@ -26,4 +26,12 @@ describe('SanitizacaoBuilder', () => {
 
     expect(sanitizado.nome).toBe('joao')
   })
+
+  it('Deve retornar um float', () => {
+    const sanitizacao = builder('valor').toFloat().build()
+
+    const sanitizado = sanitizacao({ valor: '  1.99  ' })
+
+    expect(sanitizado.valor).toBe(1.99)
+  })
 })

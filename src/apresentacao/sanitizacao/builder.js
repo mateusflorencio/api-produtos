@@ -13,6 +13,10 @@ export default (campo) => {
       sanitizacoes.push((body) => body[campo].toLowerCase())
       return builder
     },
+    toFloat: () => {
+      sanitizacoes.push((body) => parseFloat(body[campo]))
+      return builder
+    },
     build: () => {
       return (body) => {
         sanitizacoes.forEach((sanitizacao) => {
