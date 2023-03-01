@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals'
 
-import criacaoProduto from '@/apresentacao/controladores/criacao-produto.js'
+import criacaoProduto from '@/apresentacao/controladores/produtos/criacao.js'
 
 describe('CriacaoProduto', () => {
   const validar = jest.fn(() => [])
