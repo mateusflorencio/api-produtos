@@ -1,3 +1,3 @@
-import single from '@/externo/repositorio/mongo/prisma/single.js'
+import single from '@/externo/repositorio/mongo/single.js'
 
 export default () => single
