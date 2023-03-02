@@ -15,4 +15,3 @@ export default (port) => {
   app.listen(port || env.port, () => console.info(geral().server.listen, port || env.port))
   return app
 }
-

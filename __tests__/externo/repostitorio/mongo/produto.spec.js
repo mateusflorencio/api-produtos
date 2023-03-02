@@ -1,6 +1,6 @@
 import { jest, beforeEach } from '@jest/globals'
 
-import produtos from '@/externo/repositorio/mongo/prisma/produtos.js'
+import produtos from '@/externo/repositorio/mongo/produtos.js'
 
 describe('Repositório de produtos', () => {
   let single

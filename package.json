@@ -6,18 +6,16 @@
   "type": "module",
   "scripts": {
     "start": "node --loader esm-module-alias/loader --no-warnings ./src/main/index.js",
-    "dev": "nodemon --loader esm-module-alias/loader --no-warnings src/main/index.js",
+    "dev": "nodemon -r dotenv/config --loader esm-module-alias/loader --no-warnings ./src/main/index.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --no-cache --runInBand",
     "test:watch": "npm t -- --watch ",
     "test:ci": "npm t -- --ci --coverage",
     "test:e2e": "npm t -- --watch --detectOpenHandles --config ./jest.e2e.config.js",
-    "dev:compose": "docker-compose up -d",
-    "dev:generate": "prisma generate --schema=./src/externo/repositorio/mongo/prisma/schema.prisma"
+    "dev:compose": "docker-compose up -d"
   },
   "aliases": {
     "@": "./src"
   },
-  "prisma": "src/externo/repositorio/mongo/prisma/schema.prisma",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mateusflorencio/api-produtos.git"
@@ -46,8 +44,10 @@
   "dependencies": {
     "@prisma/client": "^4.11.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "esm-module-alias": "^2.0.3",
     "express": "^4.18.2",
-    "mongodb": "^5.1.0"
+    "mongodb": "^5.1.0",
+    "mongoose": "^7.0.0"
   }
 }
