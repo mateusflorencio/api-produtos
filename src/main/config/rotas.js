@@ -2,8 +2,6 @@ import { Router } from 'express'
 import { readdirSync } from 'fs'
 import { join, resolve } from 'path'
 
-console.log(resolve())
-
 export default (app) => {
   const router = Router()
   app.use('/api', router)
