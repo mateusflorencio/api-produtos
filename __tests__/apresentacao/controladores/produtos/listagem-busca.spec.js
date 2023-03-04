@@ -11,7 +11,8 @@ describe('Controlador de listagem e busca de produtos', () => {
       dir: 'asc',
       page: 1,
       limit: 10,
-      search: 'teste'
+      search: 'teste',
+      field: 'nome'
     }
   }
 

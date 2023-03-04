@@ -6,12 +6,15 @@ export default (buscaComFiltro) => async (query) => {
 }
 
 const handleQuery = (query) => {
-  const { ord, dir, page, limit, search } = query
+  const { ord, dir, page, limit, field, search } = query
   const out = {}
   out.ord = ord ? ord.toLowerCase() : 'nome'
   out.dir = dir ? dir.toLowerCase() : 'asc'
   out.page = page ? parseInt(page) : 1
   out.limit = limit ? parseInt(limit) : 10
-  if (search) out.search = search
+  if (field && search) {
+    out.field = field.toLowerCase()
+    out.search = search.toLowerCase()
+  }
   return out
 }
