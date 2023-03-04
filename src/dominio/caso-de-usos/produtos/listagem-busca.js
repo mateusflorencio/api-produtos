@@ -1,0 +1,17 @@
+export default (buscaComFiltro) => async (query) => {
+  const queryMontada = handleQuery(query)
+  const out = await buscaComFiltro(queryMontada)
+  if (out instanceof Error) return { erros: out.message }
+  return { data: out }
+}
+
+const handleQuery = (query) => {
+  const { ord, dir, page, limit, search } = query
+  const out = {}
+  out.ord = ord ? ord.toLowerCase() : 'nome'
+  out.dir = dir ? dir.toLowerCase() : 'asc'
+  out.page = page ? parseInt(page) : 1
+  out.limit = limit ? parseInt(limit) : 10
+  if (search) out.search = search
+  return out
+}
