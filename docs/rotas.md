@@ -12,7 +12,7 @@ retorna: 'OK'
 
 > **POST**  /produto
 
-body: 
+body:
 
 ```json
 {
