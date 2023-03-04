@@ -6,7 +6,13 @@
 
 > **GET**  /teste
 
-retorna: 'OK'
+```json
+{
+  "status": 200,
+  "body": "ok"
+}
+
+```
 
 ## Produtos
 
@@ -29,12 +35,23 @@ retornar:
 
 ```json
 {
+  //sucesso
   "status": 201,
   "body": {
     "id": "string"
   }
 }
+
+{
+  //erro caso campo seja inválido
+  "status": 400, 
+  "body": {
+    "campo": "inválido"
+  }
+}
 ```
+
+---
 
 ### Filtrar e buscar produto
 
@@ -56,13 +73,19 @@ Query params opcionais:
 
 ```json
 {
-  #sucesso
+  //sucesso
   "status": 200,
   "body": ["resultado"]
 }
 
+```
+
+## Erro No Servidor ou Afins
+
+```json
+
 {
-  #erro
+  //erro
   "status": 500,
   "body": "mensagem erro"
 }
