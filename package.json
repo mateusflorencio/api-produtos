@@ -11,7 +11,8 @@
     "test:watch": "npm t -- --watch ",
     "test:ci": "npm t -- --ci --coverage",
     "test:e2e": "npm t -- --watch --detectOpenHandles --config ./jest.e2e.config.js",
-    "dev:compose": "docker-compose up -d"
+    "test:compose": "docker-compose -f docker-compose.test.yml up -d",
+    "dev:compose": "docker-compose -f docker-compose.dev.yml up -d"
   },
   "aliases": {
     "@": "./src"

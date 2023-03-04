@@ -5,7 +5,7 @@ describe('Repositório de Lista e Busca de Produtos', () => {
   let sut
 
   beforeAll(async () => {
-    await single.connect('mongodb://root:secret@localhost:27017/admin')
+    await single.connect('mongodb://root:secret@localhost:101010/local')
     await single.produtos.insertMany([
       { nome: 'Produto 1', preco: 10, descricao: 'teste' },
       { nome: 'Produto 2', preco: 20, descricao: 'teste' },
