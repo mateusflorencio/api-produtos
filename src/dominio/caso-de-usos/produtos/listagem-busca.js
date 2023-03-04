@@ -1,6 +1,6 @@
-export default (buscaComFiltro) => async (query) => {
+export default (db) => async (query) => {
   const queryMontada = handleQuery(query)
-  const out = await buscaComFiltro(queryMontada)
+  const out = await db.buscaComFiltro(queryMontada)
   if (out instanceof Error) return { erros: out.message }
   return { data: out }
 }

@@ -1,4 +1,4 @@
-import { badRequest, ok, serverError } from '@/apresentacao/http'
+import { badRequest, ok, serverError } from '@/apresentacao/http.js'
 
 export default (casoDeUsoBuscaFiltragemProdutos) => async ({ query }) => {
   try {
