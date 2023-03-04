@@ -1,9 +1,10 @@
-import { ok, serverError } from '@/apresentacao/http'
+import { badRequest, ok, serverError } from '@/apresentacao/http'
 
 export default (casoDeUsoBuscaFiltragemProdutos) => async ({ query: { ord, dir, page, limit, search } }) => {
   try {
     const res = await casoDeUsoBuscaFiltragemProdutos({ ord, dir, page, limit, search })
-    return ok(res)
+    if (res.erros) return badRequest(res.erros)
+    return ok(res.data)
   } catch {
     return serverError()
   }
