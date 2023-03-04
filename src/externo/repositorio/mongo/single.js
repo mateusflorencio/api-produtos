@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import env from '@/main/config/env.js'
 
-const connect = async () => await mongoose.connect(env.databaseUrl, {
+const connect = async (url) => await mongoose.connect(env.databaseUrl || url, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -17,6 +17,12 @@ const schema = new mongoose.Schema({
   nome: String,
   descricao: String
 })
+
+//ciar index
+
+schema.index({ nome: 'text' })
+schema.index({ descricao: 'text' })
+
 // cria o model
 const produtos = mongoose.model('Produto', schema)
 export default {
