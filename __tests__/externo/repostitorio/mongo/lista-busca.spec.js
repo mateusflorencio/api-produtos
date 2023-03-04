@@ -19,7 +19,7 @@ describe('Repositório de Lista e Busca de Produtos', () => {
   })
 
   afterAll(async () => {
-    await single.produtos.deleteMany({})
+    await single.produtos.deleteMany({ nome: { $regex: /Produto/ } })
     await single.disconnect()
   })
 
