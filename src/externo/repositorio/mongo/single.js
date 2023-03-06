@@ -1,10 +1,17 @@
 import mongoose from 'mongoose'
 import env from '@/main/config/env.js'
+import log from 'customLog'
 
-const connect = async () => await mongoose.connect(env.databaseUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+const connect = () => {
+  mongoose.connect(env.databaseUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then(() => {
+    log.info('MongoDB connected')
+  }).catch((err) => {
+    log.error(err)
+  })
+}
 
 const disconnect = async () => await mongoose.disconnect()
 
