@@ -43,7 +43,6 @@
     "supertest": "^6.3.3"
   },
   "dependencies": {
-    "@prisma/client": "^4.11.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "esm-module-alias": "^2.0.3",
