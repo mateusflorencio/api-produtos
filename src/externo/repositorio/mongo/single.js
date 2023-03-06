@@ -8,10 +8,6 @@ const connect = async () => await mongoose.connect(env.databaseUrl, {
 
 const disconnect = async () => await mongoose.disconnect()
 
-connect().then(() => {
-  console.log('Conectado ao Mongo')
-})
-
 const schema = new mongoose.Schema({
   preco: Number,
   nome: String,
