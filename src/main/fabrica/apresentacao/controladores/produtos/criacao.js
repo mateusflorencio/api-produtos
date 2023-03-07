@@ -5,6 +5,8 @@ import temCampo from '@/apresentacao/validacao/tem-campo.js'
 import sanitizacaoBuilder from '@/apresentacao/sanitizacao/builder.js'
 import sanitizacaoCompose from '@/apresentacao/sanitizacao/compose.js'
 import casoDeUso from '@/main/fabrica/dominio/casos-de-usos/produto/criacao.js'
+import controlador from '@/main/fabrica/apresentacao/controladores/controlador.js'
+import log from 'customLog'
 
 export default () => {
   const validacao = compose([
@@ -18,5 +20,5 @@ export default () => {
     sanitizacaoBuilder('preco').toFloat().build()
   ])
 
-  return criacao(validacao, sanitizacao, casoDeUso())
+  return controlador(criacao(validacao, sanitizacao, casoDeUso()), log)
 }

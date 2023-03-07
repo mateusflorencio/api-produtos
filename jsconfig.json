@@ -4,6 +4,9 @@
     "paths": {
       "@/*": [
         "*"
+      ],
+      "customLog": [
+        ".src/externo/log/winston.js"
       ]
     }
   }

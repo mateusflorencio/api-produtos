@@ -20,7 +20,7 @@ describe('Controlador de listagem e busca de produtos', () => {
     casoDeUso.mockResolvedValueOnce({ data: 'dados da busca' })
 
     const out = await sut(req)
-    
+
     expect(out.statusCode).toBe(200)
     expect(out.body).toEqual('dados da busca')
   })
@@ -32,14 +32,5 @@ describe('Controlador de listagem e busca de produtos', () => {
 
     expect(out.statusCode).toBe(400)
     expect(out.body).toEqual('erros da busca')
-  })
-
-  test('Deve retornar 500 se o caso de uso lançar uma exceção', async () => {
-    casoDeUso.mockRejectedValueOnce(new Error('erro'))
-
-    const out = await sut(req)
-
-    expect(out.statusCode).toBe(500)
-    expect(out.body).toEqual('Erro interno do servidor')
   })
 })
