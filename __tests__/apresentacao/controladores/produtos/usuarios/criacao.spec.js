@@ -102,6 +102,23 @@ describe('Controlador de criação de usuários', () => {
     expect(sanitizar).toHaveReturnedWith(usuario)
   })
 
+  test('Deve chamar o caso de uso de criação de usuário apenas com os campos corretos', async () => {
+    const usuario = {
+      nome: 'nome sanitizado',
+      email: 'email sanitizado',
+      senha: 'senha sanitizada',
+      campoInexistente: 'campoInexistente'
+    }
+
+    sanitizar.mockReturnValueOnce(usuario)
+    casoDeUsoCriacaoUsuario.mockReturnValueOnce({ data: '' })
+
+    await sut(body)
+
+    expect(casoDeUsoCriacaoUsuario).toHaveBeenCalledWith({ nome: usuario.nome, email: usuario.email, senha: usuario.senha })
+    expect(casoDeUsoCriacaoUsuario).toHaveBeenCalledTimes(1)
+  })
+
   test('Deve chamar o caso de uso de criação de usuário', async () => {
     const usuario = {
       nome: 'nome sanitizado',
@@ -119,6 +136,7 @@ describe('Controlador de criação de usuários', () => {
 
   test('Deve retornar 400 se o caso de uso retornar erros', async () => {
     const erros = ['erro']
+    sanitizar.mockReturnValueOnce(body)
     casoDeUsoCriacaoUsuario.mockReturnValueOnce({ erros: erros })
 
     const resposta = await sut(body)
@@ -129,6 +147,7 @@ describe('Controlador de criação de usuários', () => {
 
   test('Deve retornar 201 se o caso de uso retornar dados', async () => {
     const dados = { id: 'id' }
+    sanitizar.mockReturnValueOnce(body)
     casoDeUsoCriacaoUsuario.mockReturnValueOnce({ data: dados })
 
     const resposta = await sut(body)
