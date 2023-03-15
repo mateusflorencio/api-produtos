@@ -4,6 +4,9 @@ export default (idioma = 'pt-br') => {
       criacao: {
         usuarioJaExiste: 'Usuário já existe',
         usuarioCriado: 'Usuário criado'
+      },
+      autenticacao: {
+        dadosInvalidos: 'Dados inválidos'
       }
     }
   }
