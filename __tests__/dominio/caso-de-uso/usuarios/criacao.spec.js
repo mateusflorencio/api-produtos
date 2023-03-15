@@ -6,7 +6,6 @@ import criacao from '@/dominio/caso-de-usos/usuarios/criacao.js'
 describe('Caso de uso: Criar usuario', () => {
   let repositorio
   let encrypt
-  let gerarToken
   let sut
 
   const mockUsuarioCriado = {
@@ -21,8 +20,7 @@ describe('Caso de uso: Criar usuario', () => {
       criar: jest.fn()
     }
     encrypt = jest.fn()
-    gerarToken = jest.fn()
-    sut = criacao(encrypt, repositorio, gerarToken)
+    sut = criacao(encrypt, repositorio)
   })
 
   afterEach(() => {
@@ -83,7 +81,7 @@ describe('Caso de uso: Criar usuario', () => {
 
     await sut({ email, senha, nome, nivelUsuario: 'super' })
 
-    expect(repositorio.criar).toHaveBeenCalledWith({ email, senha: senhaCriptografada, nome, nivel: 1})
+    expect(repositorio.criar).toHaveBeenCalledWith({ email, senha: senhaCriptografada, nome, nivel: 1 })
     expect(repositorio.criar).toHaveBeenCalledTimes(1)
   })
 
@@ -94,30 +92,13 @@ describe('Caso de uso: Criar usuario', () => {
 
     const out = await sut({})
     expect(out.erros).toEqual(erro.message)
-    expect(gerarToken).not.toHaveBeenCalled()
   })
 
-  it('Deve chamar o gerarToken com o id, email e nome', async () => {
-    const id = 1
-    const email = 'email'
-    const nome = 'nome'
-    repositorio.buscar.mockResolvedValueOnce(false)
-    repositorio.criar.mockResolvedValueOnce({ id, email, nome })
-
-    await sut({})
-
-    expect(gerarToken).toHaveBeenCalledWith({ id, email, nome })
-    expect(gerarToken).toHaveBeenCalledTimes(1)
-  })
-
-  it('Deve retornar o token', async () => {
+  it('Deve retonar algo se tudo der certo', async () => {
     repositorio.buscar.mockResolvedValueOnce(false)
     repositorio.criar.mockResolvedValueOnce(mockUsuarioCriado)
-    gerarToken.mockResolvedValueOnce('token')
 
-    const res = await sut({})
-
-    expect(res.data.token).toBeTruthy()
-    expect(res.data.token).toEqual('token')
+    const out = await sut({})
+    expect(out.data).toEqual(i18n().criacao.usuarioCriado)
   })
 })
