@@ -11,5 +11,5 @@ export default (cache, repositorioUsuario, compareSenha, gerarToken) => async ({
   if (!usuario) return { erro: i18n().autenticacao.dadosInvalidos }
   const senhaEstaCorreta = compareSenha(senha, usuario.senha)
   if (!senhaEstaCorreta) return { erro: i18n().autenticacao.dadosInvalidos }
-  return { token: gerarToken(usuario) }
+  return { data: { token: gerarToken(usuario) } }
 }
