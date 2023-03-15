@@ -6,6 +6,7 @@ import criacao from '@/dominio/caso-de-usos/usuarios/criacao.js'
 describe('Caso de uso: Criar usuario', () => {
   let repositorio
   let encrypt
+  let cache
   let sut
 
   const mockUsuarioCriado = {
@@ -20,7 +21,10 @@ describe('Caso de uso: Criar usuario', () => {
       criar: jest.fn()
     }
     encrypt = jest.fn()
-    sut = criacao(encrypt, repositorio)
+    cache = {
+      set: jest.fn()
+    }
+    sut = criacao(encrypt, repositorio, cache)
   })
 
   afterEach(() => {
@@ -66,7 +70,7 @@ describe('Caso de uso: Criar usuario', () => {
 
     await sut({ email, senha, nome })
 
-    expect(repositorio.criar).toHaveBeenCalledWith({ email, senha: senhaCriptografada, nome, nivel: 4 })
+    expect(repositorio.criar).toHaveBeenCalledWith({ email, senha: senhaCriptografada, nome, nivel: 'cliente' })
     expect(repositorio.criar).toHaveBeenCalledTimes(1)
   })
 
@@ -92,6 +96,15 @@ describe('Caso de uso: Criar usuario', () => {
 
     const out = await sut({})
     expect(out.erros).toEqual(erro.message)
+  })
+
+  it('Deve chamar o cache com o email e o usuario criado', async () => {
+    repositorio.buscar.mockResolvedValueOnce(false)
+    repositorio.criar.mockResolvedValueOnce(mockUsuarioCriado)
+
+    const email = 'email'
+    await sut({ email })
+    expect(cache.set).toHaveBeenCalledWith(email, mockUsuarioCriado)
   })
 
   it('Deve retonar algo se tudo der certo', async () => {
